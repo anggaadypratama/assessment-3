@@ -6,22 +6,28 @@ public class PopUp : MonoBehaviour
 {
 
     public GameObject Panel;
+    public bool isActive = true;
 
-    public void OpenPanel(){
-        if(Panel != null ){
-            bool isActive = Panel.activeSelf;
+
+    public void Start()
+    {
+        Panel.SetActive(!isActive);
+    }
+
+    public void OpenPanel()
+    {
+        if (Panel != null)
+        {
+            Panel.SetActive(isActive);
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             Panel.SetActive(!isActive);
         }
     }
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 }

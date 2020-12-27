@@ -1,23 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RebanaText : MonoBehaviour
 {
 
     public GameObject rebanaText;
-    // Start is called before the first frame update
-    public void Start()
-    {
-        rebanaText.SetActive(false);
+    public GameObject Character;
+    private float distance;
+    public float objectDistance;
+
+    private void Update() {
+        distance = Vector3.Distance(Character.transform.position, rebanaText.transform.position);
+
     }
 
-    public void OnMouseOver(){
-        rebanaText.SetActive(true);
-    }
+    public void Start() => rebanaText.SetActive(false);
+    public void OnMouseExit() => rebanaText.SetActive(false);
+    
+    public void OnMouseOver() {
+        if(distance < objectDistance){
+            rebanaText.SetActive(true);
+        }else{
+            rebanaText.SetActive(false);
 
-    public void OnMouseExit(){
-        rebanaText.SetActive(false);
+        }
     }
 
 }

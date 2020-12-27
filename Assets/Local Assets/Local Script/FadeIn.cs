@@ -11,13 +11,8 @@ public class FadeIn : MonoBehaviour
     void Start()
     {
         darkFade.canvasRenderer.SetAlpha(1.0f);
-
         fadeIn();
     }
 
-    // Update is called once per frame
-    void fadeIn()
-    {
-        darkFade.CrossFadeAlpha(0,1,false);
-    }
+    void fadeIn() =>  darkFade.CrossFadeAlpha(0,2,false);
 }

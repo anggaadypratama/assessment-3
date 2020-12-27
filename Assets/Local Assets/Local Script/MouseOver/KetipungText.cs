@@ -8,20 +8,25 @@ public class KetipungText : MonoBehaviour
 {
 
     public GameObject ketipungText;
-    // Start is called before the first frame update
-    public void Start()
-    {
-        ketipungText.SetActive(false);
+    public GameObject Character;
+    private float distance;
+    public float objectDistance;
+
+    private void Update() {
+        distance = Vector3.Distance(Character.transform.position, ketipungText.transform.position);
+
     }
 
-    public void OnMouseOver(){
-        Console.WriteLine(true);
-        ketipungText.SetActive(true);
-    }
+    public void Start() => ketipungText.SetActive(false);
+    public void OnMouseExit() => ketipungText.SetActive(false);
+    
+    public void OnMouseOver() {
+        if(distance < objectDistance){
+            ketipungText.SetActive(true);
+        }else{
+            ketipungText.SetActive(false);
 
-    public void OnMouseExit(){
-        Console.WriteLine(false);
-        ketipungText.SetActive(false);
+        }
     }
 
 }
